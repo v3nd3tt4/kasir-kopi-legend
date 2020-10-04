@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p class="text-center"><u><b>Resep</b></u></p>
+            <p class="text-center"><u><b>Pesanan</b></u></p>
             <br><br>
-            <p class="text-right">Kode Resep: <?=$row_resep->row()->kode_resep?></p> 
+            <p class="text-right">Kode Pesanan: <?=$row_resep->row()->kode_resep?></p> 
             <br><br>
             <style>
                 @media print {
@@ -17,17 +17,12 @@
             <br><br> -->
             </div>
             <button class="btn btn-danger " type="button" onclick="window.history.back();"><i class="fas fa-arrow-left"></i> Kembali</button>
-            <?php if($row_resep->row()->jenis == 'umum'){?>
-                <?php if($row_resep->row()->status == 'dibayar'){?>
-                <a href="<?=base_url()?>trx/selesai/<?=$row_resep->row()->id_resep?>" class="btn btn-success float-right" type="button" onclick="return confirm('Apakah anda yakin');"><i class="fas fa-sync"></i> Selesaikan Transaksi ini</a>
-                <?php }?>
-            <?php }else if($row_resep->row()->jenis == 'pasien jaminan'){?>
-                <?php if($row_resep->row()->status != 'selesai'){?>
-                <a href="<?=base_url()?>trx/selesai/<?=$row_resep->row()->id_resep?>" class="btn btn-success float-right" type="button" onclick="return confirm('Apakah anda yakin');"><i class="fas fa-sync"></i> Selesaikan Transaksi ini</a>
-                <?php }?>
+            
+            <?php if($row_resep->row()->status != 'selesai'){?>
+            <!-- <a href="<?=base_url()?>trx/selesai/<?=$row_resep->row()->id_resep?>" class="btn btn-success float-right" type="button" onclick="return confirm('Apakah anda yakin');"><i class="fas fa-sync"></i> Selesaikan Transaksi ini</a> -->
             <?php }?>
             <br><br>
-            <table class="table table-striped table-bordered">
+            <!-- <table class="table table-striped table-bordered">
                 <tr>
                     <td>Nama Unit</td>
                     <td>: <?=$row_resep->row()->nama_unit?></td>
@@ -58,7 +53,7 @@
                     <td>: <?=$row_resep->row()->status?></td>
                     
                 </tr>
-            </table>
+            </table> -->
             <br>
             <br>
             <br>
@@ -68,9 +63,9 @@
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Obat</td>
+                        <td>Pesanan</td>
                         <td>Jumlah</td>
-                        <td>Harga Beli (per satuan)</td>
+                        <!-- <td>Harga Beli (per satuan)</td> -->
                         <td>Harga Jual (per satuan)</td>
                         <td>Total </td>
                     </tr>
@@ -90,10 +85,10 @@
                             <input type="hidden" class="form-control" value="<?=$resep_detail->jumlah?>" name="jumlah_bayar[]">
                             <?=$resep_detail->jumlah?>
                         </td>
-                        <td>
-                            Rp. <?=number_format($resep_detail->harga_beli, '0', ',', '.')?>
-                            <!-- <input type="number" class="form-control" name="harga_beli_bayar[]" required> -->
-                        </td>
+                        <!-- <td>
+                            Rp. <?=number_format($resep_detail->harga, '0', ',', '.')?>
+                            <input type="number" class="form-control" name="harga_beli_bayar[]" required> 
+                        </td> -->
                         <td>
                         Rp. <?=number_format($resep_detail->harga_jual, '0', ',', '.')?>
                             <!-- <input type="number" class="form-control" name="harga_jual_bayar[]" required> -->
@@ -113,7 +108,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <!-- <td></td> -->
                     </tr>
                     <?php
                         }
@@ -122,7 +117,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5"><p class="text-right"><b>Total Bayar</b></p></td>
+                        <td colspan="4"><p class="text-right"><b>Total Bayar</b></p></td>
                         <td>Rp. <?=number_format($tot_bayar, '0', ',', '.')?></td>
                     </tr>
                 </tfoot>

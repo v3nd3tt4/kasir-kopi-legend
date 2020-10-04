@@ -28,8 +28,8 @@
                             <thead>
                                 <tr>
                                     <td>No</td>
-                                    <td>Kode Obat</td>
-                                    <td>Nama Obat</td>
+                                    <td>Kode Menu</td>
+                                    <td>Nama Menu</td>
                                     <td>Stok Tersedia</td>
                                     <td>Aksi</td>
                                 </tr>

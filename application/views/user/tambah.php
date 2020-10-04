@@ -26,7 +26,7 @@
                             <label for="">Password:</label>
                             <input type="text" class="form-control" name="password">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="">Unit:</label>
                             <select class="form-control" name="unit">
                                 <option value="">--Pilih--</option>
@@ -34,13 +34,13 @@
                                 <option value="<?=$row_unit->id_unit?>"><?=$row_unit->nama_unit?></option>
                                 <?php }?>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="">Level:</label>
                             <select name="level" id="" class="form-control">
                                     <option value="">--Pilih--</option>
                                     <option value="Admin">Admin</option>
-                                    <option value="Operator">Operator</option>
+                                    <!-- <option value="Operator">Operator</option> -->
                                     <option value="Kasir">Kasir</option>
                             </select>
                         </div>

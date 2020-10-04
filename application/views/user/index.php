@@ -23,7 +23,7 @@
                                 <td>Nama</td>
                                 <td>Username</td>
                                 <td>Password</td>
-                                <td>Unit</td>
+                                <!-- <td>Unit</td> -->
                                 <td>Level</td>
                                 <td>Aksi</td>
                             </tr>
@@ -35,7 +35,7 @@
                                 <td><?=$row_data->nama_user?></td>
                                 <td><?=$row_data->username?></td>
                                 <td><?=$row_data->password?></td>
-                                <td><?=$row_data->nama_unit?></td>
+                                <!-- <td><?=$row_data->nama_unit?></td> -->
                                 <td><?=$row_data->level?></td>
                                 <td>
                                 <a href="<?=base_url()?>user/remove/<?=$row_data->id_user?>" class="btn btn-outline-danger btn-sm mb-1 " onclick="return confirm('Apakah anda yakin akan menghapus data ini?');"><i class="fas fa-trash-alt"></i> Hapus</a>

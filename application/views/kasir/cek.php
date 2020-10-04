@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p class="text-center"><u><b>Resep</b></u></p>
+            <p class="text-center"><u><b>Pesanan</b></u></p>
             <br><br>
-            <p class="text-right">Kode Resep: <?=$row_resep->row()->kode_resep?></p> 
+            <p class="text-right">Kode Pesanan: <?=$row_resep->row()->kode_resep?></p> 
             <br><br>
             <style>
                 @media print {
@@ -18,7 +18,7 @@
             <br><br>
             </div>
             <table class="table table-striped table-bordered">
-                <tr>
+                <!-- <tr>
                     <td>Nama Unit</td>
                     <td>: <?=$row_resep->row()->nama_unit?></td>
                     
@@ -42,7 +42,7 @@
                     <td>Nomor Rekam Medis</td>
                     <td>: <?=$row_resep->row()->nomor_rekam_medis?></td>
                     
-                </tr>
+                </tr> -->
             </table>
             <br>
             <br>
@@ -53,9 +53,9 @@
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Obat</td>
+                        <td>Pesanan</td>
                         <td>Jumlah</td>
-                        <td>Harga Beli (per satuan)</td>
+                        <!-- <td>Harga Beli (per satuan)</td> -->
                         <td>Harga Jual (per satuan)</td>
                         <td>Total </td>
                     </tr>
@@ -75,10 +75,10 @@
                             <input type="hidden" class="form-control" value="<?=$resep_detail->jumlah?>" name="jumlah_bayar[]">
                             <?=$resep_detail->jumlah?>
                         </td>
-                        <td>
+                        <!-- <td>
                             Rp. <?=number_format($resep_detail->harga_beli, '0', ',', '.')?>
-                            <!-- <input type="number" class="form-control" name="harga_beli_bayar[]" required> -->
-                        </td>
+                            <input type="number" class="form-control" name="harga_beli_bayar[]" required>
+                        </td> -->
                         <td>
                         Rp. <?=number_format($resep_detail->harga_jual, '0', ',', '.')?>
                             <!-- <input type="number" class="form-control" name="harga_jual_bayar[]" required> -->
@@ -98,7 +98,6 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
                     </tr>
                     <?php
                         }
@@ -107,7 +106,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5"><p class="text-right"><b>Total Bayar</b></p></td>
+                        <td colspan="4"><p class="text-right"><b>Total Bayar</b></p></td>
                         <td>Rp. <?=number_format($tot_bayar, '0', ',', '.')?></td>
                     </tr>
                 </tfoot>

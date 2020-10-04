@@ -17,7 +17,7 @@
             <br><br> -->
             </div>
             
-            <table class="table table-striped table-bordered">
+            <!-- <table class="table table-striped table-bordered">
                 <tr>
                     <td>Nama Unit</td>
                     <td>: <?=$row_resep->row()->nama_unit?></td>
@@ -38,7 +38,7 @@
                     <td>: <?=$row_resep->row()->nomor_rekam_medis?></td>
                     
                 </tr>
-            </table>
+            </table> -->
             <br>
             <br>
             <br>
@@ -48,7 +48,7 @@
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Obat</td>
+                        <td>Pesanan</td>
                         <td>Jumlah</td>
                         <td style="display:none">Harga Beli (per satuan)</td>
                         <td>Harga Jual (per satuan)</td>

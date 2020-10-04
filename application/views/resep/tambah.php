@@ -3,7 +3,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?=$title?></h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?=base_url()?>resep">Resep</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url()?>resep">Pesanan</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tambah</li>
         </ol>
     </div>
@@ -20,10 +20,10 @@
                 <div class="card-body">
                     <form action="<?=base_url()?>resep/store" method="POST">
                         <div class="form-group">
-                            <label for="">Kode Resep:</label>
-                            <input type="text" class="form-control" name="nama_resep" required>
+                            <label for="">Kode Pesanan:</label>
+                            <input type="text" class="form-control" name="nama_resep" required value="<?=date('YmdHis')?>" readonly>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="">Pasien:</label>
                             <select name="id_pasien" id="" required class="form-control select2">
                                 <option value="">--pilih--</option>
@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="">Nomor Rekam Medis:</label>
                             <input type="text" class="form-control" name="nomor_rekam_medis" required>
-                        </div>
+                        </div> -->
                     </form>
                     
                 </div>
@@ -55,7 +55,7 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="">Obat:</label>
+                        <label for="">Menu:</label>
                         <select name="obat" id="obat_resep" required class="form-control select2">
                             <option value="">--pilih--</option>
                             <?php foreach($obat->result() as $row_obat){
@@ -87,7 +87,7 @@
                         <tbody></tbody>
                     </table>
                     <br>
-                    <button type="submit" class="btn btn-info btn-sm float-right"><i class="fas fa-save"></i>  Buat resep dan Selesai</button>
+                    <button type="submit" class="btn btn-info btn-sm float-right"><i class="fas fa-save"></i>  Buat Pesanan dan Selesai</button>
                 </div>
             </div>
         </div>

@@ -14,11 +14,11 @@
 
             <table>
                 <tr>
-                    <td>Kode Obat</td>
+                    <td>Kode Menu</td>
                     <td>:<?=$obat->row()->kode_obat?></td>
                 </tr>
                 <tr>
-                    <td>Nama Obat</td>
+                    <td>Nama Menu</td>
                     <td>:<?=$obat->row()->nama_obat?></td>
                 </tr>
             </table>

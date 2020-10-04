@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p class="text-center"><u><b>Resep</b></u></p>
+            <p class="text-center"><u><b>Pesanan</b></u></p>
             <br><br>
-            <p class="text-right">Kode Resep: <?=$row_resep->row()->kode_resep?></p> 
+            <p class="text-right">Kode Pesanan: <?=$row_resep->row()->kode_resep?></p> 
             <br><br>
             <style>
                 @media print {
@@ -17,7 +17,7 @@
             <br><br>
             </div>
             
-            <table class="table table-striped table-bordered">
+            <!-- <table class="table table-striped table-bordered">
                 <tr>
                     <td>Nama Unit</td>
                     <td>: <?=$row_resep->row()->nama_unit?></td>
@@ -38,7 +38,7 @@
                     <td>: <?=$row_resep->row()->nomor_rekam_medis?></td>
                     
                 </tr>
-            </table>
+            </table> -->
             <br>
             <br>
             <br>
@@ -46,7 +46,7 @@
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Obat</td>
+                        <td>Pesanan</td>
                         <td>Jumlah</td>
                     </tr>
                 </thead>

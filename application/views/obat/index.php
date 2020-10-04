@@ -11,11 +11,11 @@
     <style>
         /* th { font-size: 12px; }
         td { font-size: 11px; } */
-        .dataTables_wrapper {
+        /* .dataTables_wrapper {
             font-family: tahoma;
             font-size: 10px;
             
-        }
+        } */
     </style>
     <div class="row mb-3">
         <!-- Earnings (Monthly) Card Example -->
@@ -29,8 +29,10 @@
                             <thead>
                                 <tr>
                                     <td>No</td>
-                                    <td>Kode Obat</td>
-                                    <td>Nama Obat</td>
+                                    <td>Kode Menu</td>
+                                    <td>Nama Menu</td>
+                                    <td>Kategori</td>
+                                    <td>Harga</td>
                                     <td>Stok Tersedia</td>
                                     <td>Aksi</td>
                                 </tr>
@@ -38,12 +40,14 @@
                             <tbody>
                                 <?php $no=1;foreach($obat->result() as $row_obat){
                                     $query_stok = $this->db->get_where('view_total_stok', array('id_obat' => $row_obat->id_obat))->row();
-                                    $stok = $query_stok->stok_awal + $query_stok->pembelian - $query_stok->penggunaan;
+                                    $stok = @$query_stok->stok_awal + @$query_stok->pembelian - @$query_stok->penggunaan;
                                 ?>
                                 <tr>
                                     <td><?=$no++?>.</td>
                                     <td><?=$row_obat->kode_obat?></td>
                                     <td><?=$row_obat->nama_obat?></td>
+                                    <td><?=$row_obat->nama_unit?></td>
+                                    <td>Rp. <?=$row_obat->harga?></td>
                                     <td><?=$stok?></td>
                                     <td>
                                     <a href="<?=base_url()?>obat/remove/<?=$row_obat->id_obat?>" class="btn btn-outline-danger btn-sm mb-1 " onclick="return confirm('Apakah anda yakin akan menghapus data ini?');"><i class="fas fa-trash-alt"></i> Hapus</a>

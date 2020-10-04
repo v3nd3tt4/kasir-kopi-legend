@@ -6,18 +6,23 @@ class Resep extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if($this->session->userdata('level', true) != 'Operator'){
+        $allow = array('Operator', 'Kasir');
+        // if($this->session->userdata('level', true) != 'Operator'){
+        //     echo '<script>window.location.href = "'.base_url().'";</script>';
+        // }
+        if( !in_array($this->session->userdata('level', true), $allow) ){
             echo '<script>window.location.href = "'.base_url().'";</script>';
         }
     }
 
     public function index()
     {
-        $data['title'] = 'Resep';
+        $data['title'] = 'Pesanan';
         $data['script'] = 'resep/script';
         $this->db->from('tb_resep');
-        $this->db->join('tb_pasien', 'tb_pasien.id_pasien = tb_resep.id_pasien');
-        $this->db->where(array('tb_resep.id_unit' => $this->session->userdata('unit')));
+        // $this->db->join('tb_pasien', 'tb_pasien.id_pasien = tb_resep.id_pasien');
+        // $this->db->where(array('tb_resep.id_unit' => $this->session->userdata('unit')));
+        $this->db->order_by('id_resep', 'DESC');
         $query = $this->db->get();
         $data['row'] = $query;
         $this->load->view('_layout_sifa/header', $data);
@@ -28,7 +33,7 @@ class Resep extends CI_Controller
     }
 
     public function tambah(){
-        $data['title'] = 'Resep';
+        $data['title'] = 'Pesanan';
         $data['script'] = 'resep/script';
         $query = $this->db->get('tb_resep');
         $data['row'] = $query;
@@ -103,9 +108,9 @@ class Resep extends CI_Controller
         $data['title'] = 'DetailResep';
 
         $this->db->from('tb_resep');
-        $this->db->join('tb_pasien', 'tb_pasien.id_pasien=tb_resep.id_pasien');
-        $this->db->join('tb_dokter', 'tb_dokter.id_dokter=tb_resep.id_dokter');
-        $this->db->join('tb_unit', 'tb_unit.id_unit=tb_resep.id_unit');
+        // $this->db->join('tb_pasien', 'tb_pasien.id_pasien=tb_resep.id_pasien');
+        // $this->db->join('tb_dokter', 'tb_dokter.id_dokter=tb_resep.id_dokter');
+        // $this->db->join('tb_unit', 'tb_unit.id_unit=tb_resep.id_unit');
         $this->db->where(array('id_resep' => $id_resep));
         $data['row_resep']=$this->db->get();
 

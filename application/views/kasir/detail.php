@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p class="text-center"><u><b>Resep</b></u></p>
+            <p class="text-center"><u><b>Pesanan</b></u></p>
             <br><br>
-            <p class="text-right">Kode Resep: <?=$row_resep->row()->kode_resep?></p> 
+            <p class="text-right">Kode Pesanan: <?=$row_resep->row()->kode_resep?></p> 
             <br><br>
             <style>
                 @media print {
@@ -17,7 +17,7 @@
             <br><br> -->
             </div>
             
-            <table class="table table-striped table-bordered">
+            <!-- <table class="table table-striped table-bordered">
                 <tr>
                     <td>Nama Unit</td>
                     <td>: <?=$row_resep->row()->nama_unit?></td>
@@ -38,7 +38,7 @@
                     <td>: <?=$row_resep->row()->nomor_rekam_medis?></td>
                     
                 </tr>
-            </table>
+            </table> -->
             <br>
             <br>
             <br>
@@ -48,7 +48,7 @@
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Obat</td>
+                        <td>Pesanan</td>
                         <td>Jumlah</td>
                         <td style="display:none">Harga Beli (per satuan)</td>
                         <td>Harga Jual (per satuan)</td>
@@ -58,6 +58,7 @@
                     <input type="hidden" name="id_resep_bayar" value="<?=$row_resep->row()->id_resep?>">
                     <?php $no=1;foreach($row_resep_detail->result() as $resep_detail){
                         $id_obat = $resep_detail->id_obat;
+                        $obat = $this->db->get_where("tb_obat", array('id_obat' => $id_obat));
                     $get_max_harga_beli = $this->db->query("SELECT max(harga_beli) as ref_harga_beli from tb_stok where id_obat = '$id_obat'");    
                     $get_max_harga_jual = $this->db->query("SELECT max(harga_jual) as ref_harga_jual from tb_stok where id_obat = '$id_obat'");    
                     ?>
@@ -74,8 +75,8 @@
                             <input type="number" class="form-control" name="harga_beli_bayar[]" value="<?=$get_max_harga_beli->row()->ref_harga_beli?>" required>
                         </td>
                         <td>
-                            <small>Referensi Harga Jual: <b>Rp. <?=$get_max_harga_jual->row()->ref_harga_jual?></b></small>
-                            <input type="number" class="form-control" name="harga_jual_bayar[]" required>
+                            <small style="display:none">Referensi Harga Jual: <b>Rp. <?=$obat->row()->harga?></b></small>
+                            <input type="number" class="form-control" name="harga_jual_bayar[]" value="<?=$obat->row()->harga?>" readonly required>
                         </td>
                     </tr>
                     <?php }
@@ -87,7 +88,7 @@
                         <td>&nbsp;</td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <!-- <td></td> -->
                     </tr>
                     <?php
                         }

@@ -28,7 +28,7 @@
                     <p>Kartu Stok</p><hr>
                     <form action="<?=base_url()?>persediaan/proses_kartu_stok" method="POST">
                         <div class="form-group">
-                            <label for="">Obat</label>
+                            <label for="">Menu</label>
                             <input type="hidden" name="id_obat" value="<?=$obat->row()->id_obat?>">
                             <input type="text" class="form-control" name="obat" value="<?=$obat->row()->nama_obat?>" readonly required> 
                         </div>

@@ -6,7 +6,10 @@ class Laporan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if($this->session->userdata('level', true) != 'Kasir'){
+        // if($this->session->userdata('level', true) != 'Kasir'){
+        //     echo '<script>window.location.href = "'.base_url().'";</script>';
+        // }
+        if(empty($this->session->userdata('login', true))){
             echo '<script>window.location.href = "'.base_url().'";</script>';
         }
     }
@@ -29,10 +32,18 @@ class Laporan extends CI_Controller
     public function hari(){
         $tanggal_bayar = $this->input->post('tanggal', true);
         $id_kasir = $this->session->userdata('id_user');
-        $query = "SELECT * FROM tb_resep join tb_resep_detail on tb_resep_detail.id_resep = tb_resep.id_resep 
-        join tb_pasien on tb_pasien.id_pasien = tb_resep.id_pasien
+        if($this->session->userdata('level', true) == 'Kasir'){
+            $query = "SELECT * FROM tb_resep join tb_resep_detail on tb_resep_detail.id_resep = tb_resep.id_resep 
+        -- join tb_pasien on tb_pasien.id_pasien = tb_resep.id_pasien
         join tb_obat on tb_obat.id_obat = tb_resep_detail.id_obat
         where id_kasir = '$id_kasir' and tanggal_bayar = '$tanggal_bayar'";
+        }else{
+            $query = "SELECT * FROM tb_resep join tb_resep_detail on tb_resep_detail.id_resep = tb_resep.id_resep 
+        -- join tb_pasien on tb_pasien.id_pasien = tb_resep.id_pasien
+        join tb_obat on tb_obat.id_obat = tb_resep_detail.id_obat
+        where  tanggal_bayar = '$tanggal_bayar'";
+        }
+        
         $exe = $this->db->query($query);
         $data['data_laporan'] = $exe;
         $data['title'] = 'Laporan per hari';
@@ -44,10 +55,17 @@ class Laporan extends CI_Controller
         $tanggal_awal = $this->input->post('tanggal_awal', true);
         $tanggal_akhir = $this->input->post('tanggal_akhir', true);
         $id_kasir = $this->session->userdata('id_user');
+        if($this->session->userdata('level', true) == 'Kasir'){
         $query = "SELECT * FROM tb_resep join tb_resep_detail on tb_resep_detail.id_resep = tb_resep.id_resep 
-        join tb_pasien on tb_pasien.id_pasien = tb_resep.id_pasien
+        -- join tb_pasien on tb_pasien.id_pasien = tb_resep.id_pasien
         join tb_obat on tb_obat.id_obat = tb_resep_detail.id_obat
         where id_kasir = '$id_kasir' and tanggal_bayar between '$tanggal_awal' and '$tanggal_akhir' ";
+        }else{
+            $query = "SELECT * FROM tb_resep join tb_resep_detail on tb_resep_detail.id_resep = tb_resep.id_resep 
+        -- join tb_pasien on tb_pasien.id_pasien = tb_resep.id_pasien
+        join tb_obat on tb_obat.id_obat = tb_resep_detail.id_obat
+        where tanggal_bayar between '$tanggal_awal' and '$tanggal_akhir' ";
+        }
         $exe = $this->db->query($query);
         $data['data_laporan'] = $exe;
         $data['title'] = 'Laporan per periode';

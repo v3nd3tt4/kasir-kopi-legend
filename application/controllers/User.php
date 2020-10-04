@@ -16,7 +16,7 @@ class User extends CI_Controller
         $data['title'] = 'User';
         $data['script'] = 'user/script';
         $this->db->from('tb_user');
-        $this->db->join('tb_unit', 'tb_unit.id_unit=tb_user.unit');
+        // $this->db->join('tb_unit', 'tb_unit.id_unit=tb_user.unit');
         $query = $this->db->get();
         $data['row'] = $query;
         $this->load->view('_layout_sifa/header', $data);

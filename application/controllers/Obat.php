@@ -6,16 +6,17 @@ class Obat extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if($this->session->userdata('level', true) != 'Admin'){
+        if(empty($this->session->userdata('login', true))){
             echo '<script>window.location.href = "'.base_url().'";</script>';
         }
     }
 
     public function index(){
-        $data['title'] = 'Obat';
+        $data['title'] = 'Daftar Menu';
         $data['script'] = 'obat/script';
 
         $this->db->from('tb_obat');
+        $this->db->join("tb_unit", "tb_unit.id_unit = tb_obat.id_unit");
         $query_obat = $this->db->get();
         $data['obat'] = $query_obat;
         
@@ -27,8 +28,9 @@ class Obat extends CI_Controller
     }
 
     public function tambah(){
-        $data['title'] = 'Tambah Obat';
+        $data['title'] = 'Daftar Menu';
         $data['script'] = 'obat/script';
+        $data['kategori'] = $this->db->get("tb_unit");
         
         $this->load->view('_layout_sifa/header', $data);
         $this->load->view('_layout_sifa/sidebar', $data);
@@ -41,7 +43,8 @@ class Obat extends CI_Controller
         $data_to_save = array(
             'kode_obat'     => trim($this->input->post('kode_obat', true)),
             'nama_obat'		=> $this->input->post('nama_obat', true),
-            
+            'id_unit'       => $this->input->post('kategori', true),
+            'harga'       => $this->input->post('harga', true),
         );
         $simpan = $this->db->insert('tb_obat', $data_to_save);
         if($simpan){
@@ -65,8 +68,9 @@ class Obat extends CI_Controller
     }
 
     public function edit($id_obat){
-        $data['title'] = 'Edit Obat';
+        $data['title'] = 'Edit Menu';
         $data['script'] = 'obat/script';
+        $data['kategori'] = $this->db->get("tb_unit");
 
         $query = $this->db->get_where('tb_obat', array('id_obat' => $id_obat));
         $data['obat'] = $query;
@@ -82,7 +86,8 @@ class Obat extends CI_Controller
         $data_to_save = array(
             'kode_obat'     => trim($this->input->post('kode_obat', true)),
             'nama_obat'		=> $this->input->post('nama_obat', true),
-            
+            'id_unit'       => $this->input->post('kategori', true),
+            'harga'       => $this->input->post('harga', true),
         );
         $simpan = $this->db->update('tb_obat', $data_to_save, array('id_obat' => $this->input->post('id_obat', true)));
         if($simpan){
@@ -127,17 +132,17 @@ class Obat extends CI_Controller
         $data_to_save = array(
             'id_obat'		    => $this->input->post('id_obat', true),
             'tanggal_transaksi'	=> $this->input->post('tanggal', true),
-            'tanggal_kadaluarsa'	=> $this->input->post('tanggal_kadaluarsa', true),
-            'tanggal_jatuh_tempo'	=> $this->input->post('tanggal_jatuh_tempo', true),
-            'id_pbf'	        => $this->input->post('id_pbf', true),
-            'nomor_faktur'		=> $this->input->post('nomor_faktur', true),
+            // 'tanggal_kadaluarsa'	=> $this->input->post('tanggal_kadaluarsa', true),
+            // 'tanggal_jatuh_tempo'	=> $this->input->post('tanggal_jatuh_tempo', true),
+            // 'id_pbf'	        => $this->input->post('id_pbf', true),
+            // 'nomor_faktur'		=> $this->input->post('nomor_faktur', true),
             'jumlah_unit'	    => $this->input->post('jumlah_unit', true),
-            'id_satuan'	        => $this->input->post('id_satuan', true),
-            'harga_beli'	    => $this->input->post('harga_beli', true),
-            'harga_jual'	    => $this->input->post('harga_jual', true),
-            'no_batch'	    => $this->input->post('no_batch', true),
-            'sum_harga_beli'    => $sum_jumlah_beli,
-            'sum_harga_jual'    => $sum_jumlah_jual,
+            // 'id_satuan'	        => $this->input->post('id_satuan', true),
+            // 'harga_beli'	    => $this->input->post('harga_beli', true),
+            // 'harga_jual'	    => $this->input->post('harga_jual', true),
+            // 'no_batch'	    => $this->input->post('no_batch', true),
+            // 'sum_harga_beli'    => $sum_jumlah_beli,
+            // 'sum_harga_jual'    => $sum_jumlah_jual,
             'status'            => $status
         );
         $simpan = $this->db->insert('tb_stok', $data_to_save);
@@ -155,9 +160,9 @@ class Obat extends CI_Controller
         $data['script'] = 'obat/script';
 
         $this->db->from('tb_stok');
-        $this->db->join('tb_obat', 'tb_obat.id_obat = tb_stok.id_obat');
-        $this->db->join('tb_satuan', 'tb_satuan.id_satuan = tb_stok.id_satuan');
-        $this->db->join('tb_pbf', 'tb_pbf.id_pbf = tb_stok.id_pbf', 'left');
+        // $this->db->join('tb_obat', 'tb_obat.id_obat = tb_stok.id_obat');
+        // $this->db->join('tb_satuan', 'tb_satuan.id_satuan = tb_stok.id_satuan');
+        // $this->db->join('tb_pbf', 'tb_pbf.id_pbf = tb_stok.id_pbf', 'left');
         $this->db->where(array('tb_stok.id_obat' => $id_obat));
         $query = $this->db->get();
         $data['riwayat'] = $query;

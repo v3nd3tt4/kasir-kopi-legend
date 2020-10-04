@@ -3,7 +3,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?=$title?></h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?=base_url()?>resep">Resep</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url()?>resep">Pesanan</a></li>
             <!-- <li class="breadcrumb-item">Pages</li>
             <li class="breadcrumb-item active" aria-current="page">Blank Page</li> -->
         </ol>
@@ -20,10 +20,10 @@
                         <thead>
                             <tr>
                                 <td>No</td>
-                                <td>Kode Resep</td>
-                                <td>Pasien</td>
+                                <td>Kode Pesanan</td>
+                                <!-- <td>Pasien</td> -->
                                 <td>Status</td>
-                                <td>Jenis</td>
+                                <!-- <td>Jenis</td> -->
                                 <td>Aksi</td>
                             </tr>
                         </thead>
@@ -40,9 +40,9 @@
                             <tr>
                                 <td><?=$no++?>.</td>
                                 <td><?=$row_data->kode_resep?></td>
-                                <td><?=$row_data->nama?></td>
+                                <!-- <td><?=$row_data->nama?></td> -->
                                 <td><span class="badge <?=$class_badges?>"><?=$row_data->status?></span></td> 
-                                <td><?=$row_data->jenis?></td>
+                                <!-- <td><?=$row_data->jenis?></td> -->
                                 <td>
                                 <!-- <a href="<?=base_url()?>resep/remove/<?=$row_data->id_resep?>" class="btn btn-outline-danger btn-sm mb-1 " onclick="return confirm('Apakah anda yakin akan menghapus data ini?');"><i class="fas fa-trash-alt"></i> Hapus</a>
                                 <a href="<?=base_url()?>resep/edit/<?=$row_data->id_resep?>" class="btn btn-outline-info btn-sm mb-1 " onclick="return confirm('Apakah anda yakin akan mengedit data ini?');"><i class="fas fa-edit"></i> Edit</a> -->

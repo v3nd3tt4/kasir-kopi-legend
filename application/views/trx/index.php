@@ -20,9 +20,9 @@
                         <thead>
                             <tr>
                                 <td>No</td>
-                                <td>Kode Resep</td>
-                                <td>Pasien</td>
-                                <td>Jenis</td>
+                                <td>Kode Pesanan</td>
+                                <!-- <td>Pasien</td>
+                                <td>Jenis</td> -->
                                 <td>Status</td>
                                 <td>Aksi</td>
                             </tr>
@@ -40,8 +40,8 @@
                             <tr>
                                 <td><?=$no++?>.</td>
                                 <td><?=$row_data->kode_resep?></td>
-                                <td><?=$row_data->nama?></td>
-                                <td><?=$row_data->jenis?></td>
+                                <!-- <td><?=$row_data->nama?></td>
+                                <td><?=$row_data->jenis?></td> -->
                                 <td><span class="badge <?=$class_badges?>"><?=$row_data->status?></span> </td>
                                 <td>
                                 <!-- <a href="<?=base_url()?>resep/remove/<?=$row_data->id_resep?>" class="btn btn-outline-danger btn-sm mb-1 " onclick="return confirm('Apakah anda yakin akan menghapus data ini?');"><i class="fas fa-trash-alt"></i> Hapus</a>

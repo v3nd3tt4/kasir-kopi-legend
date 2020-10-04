@@ -23,12 +23,25 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="">Kode Obat:</label>
+                        <label for="">Kode Menu:</label>
                         <input type="text" class="form-control" name="kode_obat" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Nama Obat:</label>
+                        <label for="">Nama Menu:</label>
                         <input type="text" class="form-control" name="nama_obat" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Kategori:</label>
+                        <select class="form-control" name="kategori" required>
+                            <option value="">--pilih--</option>
+                            <?php foreach($kategori->result() as $r_kat){ ?>
+                            <option value="<?=$r_kat->id_unit?>"><?=$r_kat->nama_unit?></option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Harga:</label>
+                        <input type="number" class="form-control" name="harga" required>
                     </div>
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button>
                 </div>

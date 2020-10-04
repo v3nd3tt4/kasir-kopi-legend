@@ -3,7 +3,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?=$title?></h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?=base_url()?>obat">Obat</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url()?>obat">Menu</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url()?>obat/riwayat_stok/<?=$obat->row()->id_obat?>"><?=$obat->row()->nama_obat?></a></li>
             <li class="breadcrumb-item active" aria-current="page">Tambah</li>
         </ol>
@@ -36,7 +36,7 @@
                         <label for="">Tanggal:</label>
                         <input type="date" class="form-control" name="tanggal" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">Tanggal Jatuh Tempo:</label>
                         <input type="date" class="form-control" name="tanggal_jatuh_tempo" required>
                     </div>
@@ -47,14 +47,14 @@
                     <div class="form-group">
                         <label for="">No Batch:</label>
                         <input type="text" class="form-control" name="no_batch">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
         <div class="col-xl-6 col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">Nomor Faktur/Nomor PBF:</label>
                         <input type="text" class="form-control" name="nomor_faktur" required>
                     </div>
@@ -66,12 +66,12 @@
                             <option value="<?=$row_pbf->id_pbf?>"><?=$row_pbf->nama_pbf?></option>
                             <?php }?>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="">Jumlah Unit:</label>
                         <input type="number" class="form-control" name="jumlah_unit" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">Satuan:</label>
                         <select name="id_satuan"  class="form-control select2" required>
                             <option value="">--pilih--</option>
@@ -79,15 +79,15 @@
                             <option value="<?=$row_satuan->id_satuan?>"><?=$row_satuan->nama_satuan?></option>
                             <?php }?>
                         </select>
-                    </div>
-                    <div class="form-group">
+                    </div> -->
+                    <!-- <div class="form-group">
                         <label for="">Harga Beli:</label>
                         <input type="number" class="form-control" name="harga_beli" required>
                     </div>
                     <div class="form-group">
                         <label for="">Harga Jual:</label>
                         <input type="number" class="form-control" name="harga_jual" required>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Simpan</button>
                 </div>
             </div>

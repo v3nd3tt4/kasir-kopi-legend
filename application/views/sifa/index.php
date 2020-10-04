@@ -15,7 +15,7 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div class="text-center">
-                        <h4>Selamat Datang dalam Sistem Informasi Farmasi</h4>
+                        <h4>Selamat Datang dalam Sistem Kopi Legend</h4>
                         <hr>
                     </div>
                     <div class="row">
