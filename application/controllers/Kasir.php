@@ -49,6 +49,7 @@ class Kasir extends CI_Controller
     public function prev_trx(){
         // print_r($_POST);
         $data['title'] = 'DetailResep';
+        $data['script'] = 'kasir/script';
         $id_resep = $this->input->post('id_resep_bayar', true);
 
         $data_from_post = array();
@@ -79,13 +80,14 @@ class Kasir extends CI_Controller
 
         $this->load->view('_layout_sifa/header', $data);
         $this->load->view('kasir/prev_trx', $data);
+        $this->load->view('_layout_sifa/footer', $data);
     }
 
     public function proses_bayar(){
         $this->db->trans_begin();
 
         $id_resep = $this->input->post('id_resep_bayar', true);
-        $update_resep = $this->db->update('tb_resep', array('status' => 'dibayar', 'id_kasir' => $this->session->userdata('id_user'), 'tanggal_bayar' => date('Y-m-d')), array('id_resep' => $id_resep));
+        $update_resep = $this->db->update('tb_resep', array('status' => 'dibayar', 'id_kasir' => $this->session->userdata('id_user'), 'tanggal_bayar' => date('Y-m-d'), 'uang_dibayarkan' => $this->input->post('uang_dibayarkan', true)), array('id_resep' => $id_resep));
 
         $get_kode_resep = $this->db->get_where('tb_resep', array('id_resep' => $id_resep));
         $kode_resep = $get_kode_resep->row()->kode_resep;
@@ -143,4 +145,24 @@ class Kasir extends CI_Controller
         $this->load->view('_layout_sifa/header', $data);
         $this->load->view('kasir/cek', $data);
     }
+
+    public function cetak_nota($id_resep){
+		
+        $this->db->from('tb_resep');
+        $this->db->where(array('id_resep' => $id_resep));
+        $row_resep=$this->db->get();
+
+        $this->db->from('tb_resep_detail');
+        $this->db->join('tb_obat', 'tb_obat.id_obat=tb_resep_detail.id_obat');
+        $this->db->where(array('id_resep' => $id_resep));
+        $re=$this->db->get();
+
+        $data = array(
+            're' => $re,
+            're1' => $row_resep
+        );
+        
+		
+        $this->load->view('kasir/nota', $data);
+	}
 }

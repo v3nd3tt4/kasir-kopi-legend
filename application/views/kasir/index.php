@@ -52,6 +52,7 @@
                                 <?php }else{?>
                                 
                                 <a href="<?=base_url()?>kasir/cek/<?=$row_data->id_resep?>" class="btn btn-outline-success btn-sm mb-1 " ><i class="fas fa-eye"></i> Detail</a> 
+                                <a href="<?=base_url()?>kasir/cetak_nota/<?=$row_data->id_resep?>" class="btn btn-outline-info btn-sm mb-1 " target="_blank"><i class="fas fa-eye"></i> Nota</a> 
                                 <?php }?>
                                 
                                 </td>

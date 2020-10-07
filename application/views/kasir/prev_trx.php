@@ -95,7 +95,7 @@
                     </tr>
                     <?php }
                     if(count($data_from_post) < 3 ){
-                        for($i=0;$i<count($data_from_post)+3;$i++){
+                        for($i=0;$i<count($data_from_post)+2;$i++){
                     ?>
                     <tr>
                         <td></td>
@@ -113,8 +113,24 @@
                 <tfoot>
                     <tr>
                         <td colspan="4"><p class="text-right"><b>Total Bayar</b></p></td>
-                        <td colspan="1"><?php echo 'RP. '.number_format($total_bayar, '0', ',', '.'); ?></td>
+                        <td colspan="1">
+                        <input type="hidden" class="total_bayar" value="<?=$total_bayar?>">
+                        <?php echo 'RP. '.number_format($total_bayar, '0', ',', '.'); ?></td>
                         
+                    </tr>
+                    <tr>
+                        <td colspan="4"><p class="text-right"><b>Uang Yang  Dibayar</b></p></td>
+                        <td colspan="1">
+                        <!-- <input type="text" class="form-control uang_dibayarkan2" name="uang_dibayarkan" id="" required> -->
+                            Rp. <input type="text" class="form-control uang_dibayarkan" name="uang_dibayarkan" id="" required>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="4"><p class="text-right"><b>Kembali</b></p></td>
+                        <td colspan="1">
+                            Rp. <span class="kembali"></span>
+                        </td>
                     </tr>
                 </tfoot>
             </table>

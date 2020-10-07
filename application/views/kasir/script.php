@@ -1,4 +1,5 @@
 
+<script src="<?=base_url()?>assets/js/jquery.mask.min.js"></script>
 <script>
     $(document).ready(function(){
         $('.select2').select2({
@@ -41,5 +42,38 @@
             e.preventDefault();
             $(this).parents("tr").remove();
         });
+
+        $(document).on('input', '.uang_dibayarkan', function(e){
+            e.preventDefault();
+            var total_bayar = $('.total_bayar').val();
+            var udb = $(this).val();
+            // var udb2 = $('.uang_dibayarkan2');
+            // udb2.unmask();
+            // var t = $(this).replaceAll('.');
+            // $().text().replace(...);
+            var kembali = udb - total_bayar;
+            $('.kembali').html(kembali);
+            // $('.kembali').mask('0.000.000.000', {reverse: true});
+            // $( '.uang_dibayarkan' ).mask('0.000.000.000', {reverse: true});
+        });
+        
+        
+
+        function formatRupiah(angka, prefix){
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split   		= number_string.split(','),
+			sisa     		= split[0].length % 3,
+			rupiah     		= split[0].substr(0, sisa),
+			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+ 
+			// tambahkan titik jika yang di input sudah menjadi angka ribuan
+			if(ribuan){
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+ 
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+		}
     });
 </script>

@@ -122,4 +122,6 @@ class Resep extends CI_Controller
         $this->load->view('_layout_sifa/header', $data);
         $this->load->view('resep/detail', $data);
     }
+
+    
 }
