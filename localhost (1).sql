@@ -208,7 +208,7 @@ CREATE TABLE `tb_user` (
   `nama_user` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `unit` int(11) NOT NULL,
+  `unit` int(11) DEFAULT NULL,
   `level` varchar(255) NOT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -216,7 +216,8 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `nama_user`, `username`, `password`, `unit`, `level`) VALUES
 (1,	'Zuckerberg',	'fb',	'fb',	1,	'Admin'),
 (2,	'Linuz Torvalds',	'linuz',	'linuz',	4,	'Operator'),
-(3,	'Guido Van Rosum',	'guido',	'guido',	6,	'Kasir');
+(3,	'Guido Van Rosum',	'guido',	'guido',	6,	'Kasir'),
+(4,	'Okta Pilopa',	'vendetta',	'goldroger27',	NULL,	'Admin');
 
 DROP VIEW IF EXISTS `view_total_stok`;
 CREATE TABLE `view_total_stok` (`id_obat` int(11), `kode_obat` varchar(255), `nama_obat` varchar(255), `stok_awal` decimal(32,0), `pembelian` decimal(32,0), `penggunaan` decimal(32,0));
@@ -225,4 +226,4 @@ CREATE TABLE `view_total_stok` (`id_obat` int(11), `kode_obat` varchar(255), `na
 DROP TABLE IF EXISTS `view_total_stok`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `view_total_stok` AS select `t1`.`id_obat` AS `id_obat`,`t1`.`kode_obat` AS `kode_obat`,`t1`.`nama_obat` AS `nama_obat`,(select sum(`t2`.`jumlah_unit`) from `tb_stok` `t2` where `t2`.`id_obat` = `t1`.`id_obat` and `t2`.`status` = 'stok awal') AS `stok_awal`,(select sum(`t3`.`jumlah_unit`) from `tb_stok` `t3` where `t3`.`id_obat` = `t1`.`id_obat` and `t3`.`status` = 'pembelian') AS `pembelian`,(select sum(`t4`.`jumlah_unit`) from `tb_stok` `t4` where `t4`.`id_obat` = `t1`.`id_obat` and `t4`.`status` = 'penggunaan') AS `penggunaan` from `tb_obat` `t1`;
 
--- 2020-10-07 14:30:30
+-- 2020-10-07 14:34:02
