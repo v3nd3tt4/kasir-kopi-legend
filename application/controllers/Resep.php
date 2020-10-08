@@ -65,6 +65,8 @@ class Resep extends CI_Controller
             'nomor_rekam_medis' => $this->input->post('nomor_rekam_medis', true),
             'tanggal' => date('Y-m-d'),
             'status' => 'dibuat',
+            'pemesan' => $this->input->post('pemesan', true),
+            'keterangan' => $this->input->post('keterangan', true),
         );
         $this->db->insert('tb_resep', $data);
         $id_resep = $this->db->insert_id();

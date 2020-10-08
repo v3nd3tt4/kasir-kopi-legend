@@ -23,16 +23,15 @@
                             <label for="">Kode Pesanan:</label>
                             <input type="text" class="form-control" name="nama_resep" required value="<?=date('YmdHis')?>" readonly>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="">Pasien:</label>
-                            <select name="id_pasien" id="" required class="form-control select2">
-                                <option value="">--pilih--</option>
-                                <?php foreach($pasien->result() as $row_pasien){?>
-                                    <option value="<?=$row_pasien->id_pasien?>"><?=$row_pasien->nik?> - <?=$row_pasien->nama?></option>
-                                <?php }?>
-                            </select>
+                        <div class="form-group">
+                            <label for="">Pemesan:</label>
+                            <input type="text" class="form-control" name="pemesan" required>
                         </div>
                         <div class="form-group">
+                            <label for="">Keterangan:</label>
+                            <textarea class="form-control" name="keterangan" style="resize: none;" required></textarea>
+                        </div>
+                        <!-- <div class="form-group">
                             <label for="">Dokter:</label>
                             <select name="id_dokter" id="" required class="form-control select2">
                                 <option value="">--pilih--</option>
