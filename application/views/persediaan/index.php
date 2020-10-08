@@ -10,11 +10,11 @@
     <style>
         /* th { font-size: 12px; }
         td { font-size: 11px; } */
-        .dataTables_wrapper {
+        /* .dataTables_wrapper {
             font-family: tahoma;
             font-size: 10px;
             
-        }
+        } */
     </style>
     <div class="row mb-3">
         <!-- Earnings (Monthly) Card Example -->
