@@ -28,14 +28,14 @@ $content = '';
     $no=1;
     
     $output = '';
-    $output .= '<p class="text-dark" style="font-size: 6px">Kopi Legend<br>
+    $output .= '<p class="text-dark" style="font-size: 7px">Kopi Legend<br>
                                     Gang PU<br>
-                                tlp 08xxxxx<br>
+                                tlp. 081379434242<br><br>
     no &nbsp; &nbsp; &nbsp; : '.$this->session->userdata('id_user').'<br>
                     kasir &nbsp; : '.$this->session->userdata('nama_user').'<br>
     tgl &nbsp; &nbsp; &nbsp; : '.date('Y-m-d  h:i:s').'<br>
                 </p>
-                <table style="font-size:6px">
+                <table style="font-size:7px; width: 100%">
                 <thead>
                     <tr style="border-top:1px dashed">
                         <th >No</th>
@@ -52,28 +52,28 @@ $content = '';
                     $tot += $t;
     $output .= 		'<tr>
                         <td>'.$no++.'</td>
-                        <td>'.$resep_detail->kode_obat.'-'.$resep_detail->nama_obat.'</td>
+                        <td>'.$resep_detail->nama_obat.'</td>
                         <td>'.$resep_detail->jumlah.'</td>
-                        <td>Rp.'.number_format($resep_detail->harga_jual, '0', ',', '.').'</td>
-                        <td>Rp.'.number_format($t, '0', ',', '.').'</td>
+                        <td>'.number_format($resep_detail->harga_jual, '0', ',', '.').'</td>
+                        <td>'.number_format($t, '0', ',', '.').'</td>
                     </tr>';
                     }
     $output .= 		'<tr style="border-top:1px dashed">
                         <td colspan="4" style="text-align:right">Total :</td>
-                        <td>Rp.'.number_format($tot, '0', ',', '.').'</td>
+                        <td>'.number_format($tot, '0', ',', '.').'</td>
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align:right">Bayar :</td>
-                        <td>Rp.'.number_format($re1->row()->uang_dibayarkan, '0', ',', '.').'</td>
+                        <td>'.number_format($re1->row()->uang_dibayarkan, '0', ',', '.').'</td>
                     </tr>
                     <tr style="border-bottom:1px dashed">
                         <td colspan="4" style="text-align:right">Kembali :</td>
-                        <td>Rp.'.number_format($re1->row()->uang_dibayarkan - $tot, '0', ',', '.').'</td>
+                        <td>'.number_format($re1->row()->uang_dibayarkan - $tot, '0', ',', '.').'</td>
                     </tr>
                 </tbody>
                 </table>
                 <br/>
-        <p style="font-size:6px">terimakasih atas kunjungan anda</p>';
+        <p style="font-size:7px">terimakasih atas kunjungan anda <br/> create by: Okta Pilopa <br/> ig: @pilopaokta</p>';
         // echo $output;
     
  
