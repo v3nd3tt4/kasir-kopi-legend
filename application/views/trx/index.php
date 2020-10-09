@@ -21,6 +21,8 @@
                             <tr>
                                 <td>No</td>
                                 <td>Kode Pesanan</td>
+                                <td>Pemesan</td>
+                                <td>Keterangan</td>
                                 <!-- <td>Pasien</td>
                                 <td>Jenis</td> -->
                                 <td>Status</td>
@@ -40,6 +42,8 @@
                             <tr>
                                 <td><?=$no++?>.</td>
                                 <td><?=$row_data->kode_resep?></td>
+                                <td><?=$row_data->pemesan?></td>
+                                <td><?=$row_data->keterangan?></td>
                                 <!-- <td><?=$row_data->nama?></td>
                                 <td><?=$row_data->jenis?></td> -->
                                 <td><span class="badge <?=$class_badges?>"><?=$row_data->status?></span> </td>

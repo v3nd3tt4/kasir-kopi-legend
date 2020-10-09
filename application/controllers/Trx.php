@@ -17,6 +17,7 @@ class Trx extends CI_Controller
         $data['script'] = 'trx/script';
         $this->db->from('tb_resep');
         // $this->db->join('tb_pasien', 'tb_pasien.id_pasien = tb_resep.id_pasien');
+        $this->db->order_by('id_resep', 'DESC');
         $query = $this->db->get();
         $data['row'] = $query;
         $this->load->view('_layout_sifa/header', $data);

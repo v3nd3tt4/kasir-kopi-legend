@@ -39,7 +39,7 @@ $content = '';
                 <thead>
                     <tr style="border-top:1px dashed">
                         <th >No</th>
-                        <th>Nama</th>
+                        <th>Menu</th>
                         <th>qty</th>
                         <th>harga</th>
                         <th>Total</th>
