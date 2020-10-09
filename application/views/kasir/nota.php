@@ -34,6 +34,7 @@ $content = '';
     no &nbsp; &nbsp; &nbsp; : '.$this->session->userdata('id_user').'<br>
                     kasir &nbsp; : '.$this->session->userdata('nama_user').'<br>
     tgl &nbsp; &nbsp; &nbsp; : '.date('Y-m-d  h:i:s').'<br>
+    trx &nbsp; &nbsp; &nbsp; : '.$re1->row()->kode_resep.'<br>
                 </p>
                 <table style="font-size:7px; width: 100%">
                 <thead>
@@ -73,7 +74,7 @@ $content = '';
                 </tbody>
                 </table>
                 <br/>
-        <p style="font-size:7px">terimakasih atas kunjungan anda <br/> create by: Okta Pilopa <br/> ig: @pilopaokta</p>';
+        <div style="font-size:7px">terimakasih atas kunjungan anda <br/> create by: Okta Pilopa <br/> ig: @pilopaokta</div>';
         // echo $output;
     
  
