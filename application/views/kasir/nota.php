@@ -1,28 +1,33 @@
-<!DOCTYPE html>
+<?php 
+ob_start();
+$content = '';
+$output = '';
+$output1 .= '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kopi Legend</title>
-    <link href="<?= base_url('assets/'); ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="'.base_url().'assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <style>
     .center {
         margin: auto;
-        width: 50%;
+        /* width: 50%; */
         /* border: 3px solid green; */
-        padding: 10px;
-        font-size: 9px
+        /* padding: 10px; */
+        font-size: 5px
     }
 </style>
     <script>
-        window.print();
+        // window.print();
     </script>
 </head>
-<body class="center">
+<body class="center">';
+?>
     <?php 
     $no=1;
-    $output = '';
-    $output = '<p class="text-dark">Kopi Legend<br>
+    
+    $output .= '<p class="text-dark">Kopi Legend<br>
                                     Gang PU<br>
                                 tlp 08xxxxx<br>
     no &nbsp; &nbsp; &nbsp; : '.$this->session->userdata('id_user').'<br>
@@ -32,9 +37,9 @@
                 <table>
                 <thead>
                     <tr style="border-top:1px dashed">
-                        <th width="50">No</th>
-                        <th width="100">Nama</th>
-                        <th width="50">qty</th>
+                        <th >No</th>
+                        <th>Nama</th>
+                        <th>qty</th>
                         <th>harga</th>
                         <th>Total</th>
                     </tr>
@@ -68,7 +73,21 @@
                 </table>
                 <br/>
         <div>terimakasih atas kunjungan anda</div>';
-        echo $output;
-    ?>
-</body>
-</html>
+        // echo $output;
+    
+ $output1 .= '</body>
+</html>';
+?>
+<?php
+
+$filename="mhs.pdf"; //ubah untuk menentukan nama file pdf yang dihasilkan nantinya
+//==========================================================================================================
+//Copy dan paste langsung script dibawah ini,untuk mengetahui lebih jelas tentang fungsinya silahkan baca-baca tutorial tentang HTML2PDF
+//==========================================================================================================
+require './assets/html2pdf/autoload.php';
+use Spipu\Html2Pdf\Html2Pdf;
+$html2pdf = new Html2Pdf('P',array(38,156),'fr', true, 'UTF-8', array(2, 2, 2, 2), false); 
+$html2pdf->writeHTML($output);
+ob_end_clean();
+$html2pdf->output();
+?>
