@@ -43,7 +43,7 @@ $content = '';
                         <th>Menu</th>
                         <th>qty</th>
                         <th>harga</th>
-                        <th>Total</th>
+                        <th>Sub</th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -74,6 +74,7 @@ $content = '';
                 </tbody>
                 </table>
                 <br/>
+                =============================<br>
         <div style="font-size:7px">terimakasih atas kunjungan anda <br/> create by: Okta Pilopa <br/> ig: @pilopaokta</div>';
         // echo $output;
     
@@ -89,7 +90,7 @@ $filename="mhs.pdf"; //ubah untuk menentukan nama file pdf yang dihasilkan nanti
 //==========================================================================================================
 require './assets/html2pdf/autoload.php';
 use Spipu\Html2Pdf\Html2Pdf;
-$html2pdf = new Html2Pdf('P',array(38,156),'fr', true, 'UTF-8', array(2, 2, 2, 2), false); 
+$html2pdf = new Html2Pdf('P',array(68,156),'fr', true, 'UTF-8', array(0, 0, 0, 0), false); 
 $html2pdf->writeHTML($output);
 ob_end_clean();
 $html2pdf->output();
