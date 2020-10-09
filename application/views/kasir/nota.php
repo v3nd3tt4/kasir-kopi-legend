@@ -1,8 +1,8 @@
 <?php 
 ob_start();
 $content = '';
-$output = '';
-$output1 .= '<!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,19 +22,20 @@ $output1 .= '<!DOCTYPE html>
         // window.print();
     </script>
 </head>
-<body class="center">';
+<body class="center">
 ?>
     <?php 
     $no=1;
     
-    $output .= '<p class="text-dark">Kopi Legend<br>
+    $output = '';
+    $output .= '<p class="text-dark" style="font-size: 6px">Kopi Legend<br>
                                     Gang PU<br>
                                 tlp 08xxxxx<br>
     no &nbsp; &nbsp; &nbsp; : '.$this->session->userdata('id_user').'<br>
                     kasir &nbsp; : '.$this->session->userdata('nama_user').'<br>
     tgl &nbsp; &nbsp; &nbsp; : '.date('Y-m-d  h:i:s').'<br>
                 </p>
-                <table>
+                <table style="font-size:6px">
                 <thead>
                     <tr style="border-top:1px dashed">
                         <th >No</th>
@@ -72,12 +73,13 @@ $output1 .= '<!DOCTYPE html>
                 </tbody>
                 </table>
                 <br/>
-        <div>terimakasih atas kunjungan anda</div>';
+        <p style="font-size:6px">terimakasih atas kunjungan anda</p>';
         // echo $output;
     
- $output1 .= '</body>
-</html>';
+ 
 ?>
+</body>
+</html>
 <?php
 
 $filename="mhs.pdf"; //ubah untuk menentukan nama file pdf yang dihasilkan nantinya
