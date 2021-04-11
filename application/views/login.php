@@ -8,7 +8,7 @@
                         <div class="col-lg-12">
                             <div class="login-form">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Kopi Legend - Login</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">SI Kasir - Login</h1>
                                 </div>
                                 <form class="user" action="<?=base_url()?>login/proses_login" method="POST">
                                     <div class="form-group">
